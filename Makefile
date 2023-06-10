@@ -3,6 +3,7 @@ DOCKER_COMP = docker compose
 
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
+PHP_CONT_PHPUNIT = $(DOCKER_COMP) exec -T -e XDEBUG_MODE=coverage php
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -51,3 +52,7 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 cc: c=c:c ## Clear the cache
 cc: sf
+
+## —— Tests 🔥 ———————————————————————————————————————————————————————————————
+run-tests: ## Run tests
+	@$(PHP_CONT_PHPUNIT) bin/phpunit --coverage-text
