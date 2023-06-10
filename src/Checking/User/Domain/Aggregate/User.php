@@ -2,10 +2,10 @@
 
 namespace App\Checking\User\Domain\Aggregate;
 
-final class User
+class User
 {
     private function __construct(
-        private UserId $id,
+        private string $id,
         private UserName $name,
         private UserEmail $email,
         private UserCreatedAt $createdAt,
@@ -24,7 +24,7 @@ final class User
     ): self
     {
         return new self(
-            $id,
+            $id->value,
             $name,
             $email,
             $createdAt,
@@ -35,7 +35,7 @@ final class User
 
     public function id(): UserId
     {
-        return $this->id;
+        return UserId::fromString($this->id);
     }
 
     public function name(): UserName

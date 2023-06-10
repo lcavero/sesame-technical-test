@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+
+    <entity name="App\Checking\User\Domain\Aggregate\User" table="checking_user">
+
+        <id name="id" type="uuid" column="id">
+            <generator strategy="NONE"/>
+        </id>
+
+        <embedded name="name" class="App\Checking\User\Domain\Aggregate\UserName" use-column-prefix="false" />
+        <embedded name="email" class="App\Checking\User\Domain\Aggregate\UserEmail" use-column-prefix="false" />
+        <embedded name="createdAt" class="App\Checking\User\Domain\Aggregate\UserCreatedAt" use-column-prefix="false" />
+        <embedded name="updatedAt" class="App\Checking\User\Domain\Aggregate\UserUpdatedAt" use-column-prefix="false" />
+        <embedded name="deletedAt" class="App\Checking\User\Domain\Aggregate\UserDeletedAt" use-column-prefix="false" />
+
+    </entity>
+</doctrine-mapping>

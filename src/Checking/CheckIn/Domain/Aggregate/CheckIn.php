@@ -2,10 +2,10 @@
 
 namespace App\Checking\CheckIn\Domain\Aggregate;
 
-final class CheckIn
+class CheckIn
 {
     private function __construct(
-        private CheckInId $id,
+        private string $id,
         private CheckInStartDate $startDate,
         private CheckInEndDate $endDate,
         private CheckInUserId $userId,
@@ -26,7 +26,7 @@ final class CheckIn
     ): self
     {
         return new self(
-            $id,
+            $id->value,
             $startDate,
             $endDate,
             $userId,
@@ -38,7 +38,7 @@ final class CheckIn
 
     public function id(): CheckInId
     {
-        return $this->id;
+        return CheckInId::fromString($this->id);
     }
 
     public function createdAt(): CheckInCreatedAt
