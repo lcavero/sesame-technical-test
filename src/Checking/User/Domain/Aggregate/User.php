@@ -2,8 +2,12 @@
 
 namespace App\Checking\User\Domain\Aggregate;
 
+use App\Checking\User\Domain\Aggregate\Action\CreateUserAction;
+
 class User
 {
+    use CreateUserAction;
+
     private function __construct(
         private string $id,
         private UserName $name,
@@ -14,7 +18,7 @@ class User
     ) {
     }
 
-    public static function create(
+    public static function fromValues(
         UserId $id,
         UserName $name,
         UserEmail $email,

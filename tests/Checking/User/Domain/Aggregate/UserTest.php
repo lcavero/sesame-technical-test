@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Checking\User\Domain\Aggregate;
+namespace App\Tests\Checking\User\Domain\Aggregate;
 
 use App\Checking\User\Domain\Aggregate\User;
 use App\Checking\User\Domain\Aggregate\UserCreatedAt;
@@ -14,11 +14,11 @@ use function PHPUnit\Framework\assertSame;
 
 final class UserTest extends TestCase
 {
-    /** @dataProvider createSuccessfullyDataProvider */
-    public function testCreateSuccessfully(string $id, string $name, string $email, string $createdAt,
+    /** @dataProvider fromValuesSuccessfullyDataProvider */
+    public function testFromValuesSuccessfully(string $id, string $name, string $email, string $createdAt,
                                            string $updatedAt, ?string $deletedAt): void
     {
-        $user = User::create(
+        $user = User::fromValues(
             id: UserId::fromString($id),
             name: UserName::fromString($name),
             email: UserEmail::fromString($email),
@@ -35,7 +35,7 @@ final class UserTest extends TestCase
         assertSame($deletedAt, $user->deletedAt()->toATOM());
     }
 
-    public function createSuccessfullyDataProvider(): array
+    public function fromValuesSuccessfullyDataProvider(): array
     {
         return [
             'With deletedAt field' => [

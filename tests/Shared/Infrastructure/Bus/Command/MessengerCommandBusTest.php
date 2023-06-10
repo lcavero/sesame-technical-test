@@ -11,7 +11,6 @@ use Symfony\Component\Messenger\Stamp\TransportNamesStamp;
 
 final class MessengerCommandBusTest extends TestCase
 {
-
     public function testDispatchSuccessfully(): void
     {
         $commandMock = $this->createMock(Command::class);
@@ -32,7 +31,8 @@ final class MessengerCommandBusTest extends TestCase
         $busMock = $this->createMock(MessageBusInterface::class);
         $busMock->expects($this->once())
             ->method('dispatch')
-            ->with($this->identicalTo($commandMock), self::callback(function (array $stamps): bool {
+            ->with($this->identicalTo($commandMock), self::callback(function ($stamps): bool {
+                self::assertIsArray($stamps);
                 self::assertCount(1, $stamps);
                 $stamp = array_shift($stamps);
                 self::assertInstanceOf(TransportNamesStamp::class, $stamp);

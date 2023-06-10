@@ -15,7 +15,7 @@ class CheckIn
     ) {
     }
 
-    public static function create(
+    public static function fromValues(
         CheckInId $id,
         CheckInStartDate $startDate,
         CheckInEndDate $endDate,

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Shared\Domain\VO\DateTime;
+namespace App\Tests\Shared\Domain\VO\DateTime;
 
 use App\Shared\Domain\VO\DateTime\DateTimeOrNullValueObject;
 use App\Shared\Domain\VO\DateTime\InvalidDateTimeException;
@@ -25,6 +25,13 @@ final class DateTimeOrNullValueObjectTest extends TestCase
         self::assertSame(
             $dateTime?->format(\DateTimeInterface::ATOM),
             DateTimeOrNullValueObject::fromDateTime($dateTime)->value?->format(\DateTimeInterface::ATOM)
+        );
+    }
+
+    public function testFromNullSuccessfully(): void
+    {
+        self::assertNull(
+            DateTimeOrNullValueObject::fromNull()->value
         );
     }
 

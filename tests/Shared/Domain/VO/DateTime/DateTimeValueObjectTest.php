@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Shared\Domain\VO\DateTime;
+namespace App\Tests\Shared\Domain\VO\DateTime;
 
 use App\Shared\Domain\VO\DateTime\DateTimeValueObject;
 use App\Shared\Domain\VO\DateTime\InvalidDateTimeException;

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Checking\CheckIn\Domain\Aggregate;
+namespace App\Tests\Checking\CheckIn\Domain\Aggregate;
 
 use App\Checking\CheckIn\Domain\Aggregate\CheckIn;
 use App\Checking\CheckIn\Domain\Aggregate\CheckInCreatedAt;
@@ -14,11 +14,11 @@ use PHPUnit\Framework\TestCase;
 
 final class CheckInTest extends TestCase
 {
-    /** @dataProvider createdSuccessfullyDataProvider */
-    public function testCreatedSuccessfully(string $id, string $userId, string $createdAt, string $updatedAt,
+    /** @dataProvider fromValuesSuccessfullyDataProvider */
+    public function testFromValuesSuccessfully(string $id, string $userId, string $createdAt, string $updatedAt,
                                             ?string $deletedAt, string $startDate, ?string $endDate): void
     {
-        $checkIn = CheckIn::create(
+        $checkIn = CheckIn::fromValues(
             id: CheckInId::fromString($id),
             startDate: CheckInStartDate::fromATOM($startDate),
             endDate: CheckInEndDate::fromATOM($endDate),
@@ -37,7 +37,7 @@ final class CheckInTest extends TestCase
         self::assertSame($endDate, $checkIn->endDate()->toATOM());
     }
 
-    public function createdSuccessfullyDataProvider(): array
+    public function fromValuesSuccessfullyDataProvider(): array
     {
         return [
             'With all fields' => [

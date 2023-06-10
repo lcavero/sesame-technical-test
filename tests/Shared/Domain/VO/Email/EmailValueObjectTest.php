@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Shared\Domain\VO\Email;
+namespace App\Tests\Shared\Domain\VO\Email;
 
 use App\Shared\Domain\VO\Email\EmailValueObject;
 use App\Shared\Domain\VO\Email\InvalidEmailException;

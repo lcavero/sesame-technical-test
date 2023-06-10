@@ -15,6 +15,11 @@ readonly class DateTimeOrNullValueObject
         return new static($value);
     }
 
+    public static function fromNull(): static
+    {
+        return self::fromDateTimeImmutable(null);
+    }
+
     public final static function fromDateTime(?\DateTime $value): static
     {
         if (null === $value) {
