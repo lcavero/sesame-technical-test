@@ -1,6 +1,8 @@
 # Sesame Technical Test
 
-A Symfony test project made with CQRS, Hexagonal Architecture and DDD
+A Symfony test project made with CQRS, Hexagonal Architecture and DDD.
+
+The purpose of the project is to solve the test presented by Sesame, the statement of which can be found in the "docs" folder.
 
 Created from [Symfony Docker](https://github.com/dunglas/symfony-docker) project as starting point.
 
@@ -20,3 +22,4 @@ You can use make commands included in Makefile to run common actions like:
 - Up containers: make up
 - Down containers: make down
 - Enter in php container: make sh
+- Run tests: make run-tests

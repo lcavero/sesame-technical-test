@@ -36,5 +36,6 @@ final class AllUsersQueryHandlerTest extends TestCase
         $queryHandler = new AllUsersQueryHandler($dataQueryMock);
         $result = $queryHandler->__invoke($query);
         self::assertInstanceOf(AllUsersQueryResult::class, $result);
+        self::assertCount(2, $result->result);
     }
 }
