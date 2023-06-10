@@ -64,5 +64,8 @@
             "require": "6.3.*",
             "docker": true
         }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
     }
 }
