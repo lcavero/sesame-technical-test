@@ -3,6 +3,7 @@
 namespace Shared\Domain\VO\DateTime;
 
 use App\Shared\Domain\VO\DateTime\DateTimeValueObject;
+use App\Shared\Domain\VO\DateTime\InvalidDateTimeException;
 use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
@@ -24,6 +25,31 @@ final class DateTimeValueObjectTest extends TestCase
         self::assertSame(
             $dateTime->format(\DateTimeInterface::ATOM),
             DateTimeValueObject::fromDateTime($dateTime)->value->format(\DateTimeInterface::ATOM)
+        );
+    }
+
+    /** @dataProvider fromATOMSuccessfullyDataProvider */
+    public function testFromATOMSuccessfully(string $dateTime): void
+    {
+        self::assertSame(
+            $dateTime,
+            DateTimeValueObject::fromATOM($dateTime)->value->format(\DateTimeInterface::ATOM)
+        );
+    }
+
+    /** @dataProvider fromATOMShouldFailDataProvider */
+    public function testFromATOMShouldFail(string $dateTime): void
+    {
+        $this->expectException(InvalidDateTimeException::class);
+        DateTimeValueObject::fromATOM($dateTime);
+    }
+
+    /** @dataProvider toATOMDataProvider */
+    public function testToATOM(DateTimeImmutable $dateTime): void
+    {
+        self::assertSame(
+            $dateTime->format(\DateTimeInterface::ATOM),
+            DateTimeValueObject::fromDateTimeImmutable($dateTime)->__toString()
         );
     }
 
@@ -59,6 +85,36 @@ final class DateTimeValueObjectTest extends TestCase
         return [
             'Any date' => [
                 'value' => DateTimeImmutable::createFromFormat(\DateTimeInterface::ATOM, '2021-01-03T02:30:00+01:00')
+            ]
+        ];
+    }
+
+    public function toATOMDataProvider(): array
+    {
+        return [
+            'Any date' => [
+                'value' => DateTimeImmutable::createFromFormat(\DateTimeInterface::ATOM, '2021-01-03T02:30:00+01:00')
+            ]
+        ];
+    }
+
+    public function fromATOMSuccessfullyDataProvider(): array
+    {
+        return [
+            'Any date' => [
+                'value' => '2021-01-03T02:30:00+01:00'
+            ]
+        ];
+    }
+
+    public function fromATOMShouldFailDataProvider(): array
+    {
+        return [
+            'Invalid date' => [
+                'value' => '12021-01-03T02:303:00+01:00'
+            ],
+            'Invalid format' => [
+                'value' => '10/10/2020 10:03:00'
             ]
         ];
     }

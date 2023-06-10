@@ -20,8 +20,22 @@ readonly class DateTimeValueObject
         return self::fromDateTimeImmutable(\DateTimeImmutable::createFromMutable($value));
     }
 
-    public final function __toString(): string
+    public final static function fromATOM(string $value): static
+    {
+        $dateTime = \DateTimeImmutable::createFromFormat(DateTimeInterface::ATOM, $value);
+        if (false === $dateTime) {
+            throw InvalidDateTimeException::fromATOMValue($value);
+        }
+        return self::fromDateTimeImmutable($dateTime);
+    }
+
+    public final function toATOM(): string
     {
         return $this->value->format(DateTimeInterface::ATOM);
+    }
+
+    public final function __toString(): string
+    {
+        return $this->toATOM();
     }
 }

@@ -2,10 +2,12 @@
 
 namespace App\Shared\Domain\VO\Uuid;
 
-final class InvalidUuidException extends \Exception
+use App\Shared\Domain\Exception\DomainException;
+
+final class InvalidUuidException extends DomainException
 {
     public static function fromValue(string $value): self
     {
-        return new self(sprintf('The value "%s" is not a valid Uuid.', $value));
+        return self::create(sprintf('The value "%s" is not a valid Uuid.', $value));
     }
 }

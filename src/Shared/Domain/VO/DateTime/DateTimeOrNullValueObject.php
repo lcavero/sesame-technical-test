@@ -23,8 +23,25 @@ readonly class DateTimeOrNullValueObject
         return self::fromDateTimeImmutable(\DateTimeImmutable::createFromMutable($value));
     }
 
+    public final static function fromATOM(?string $value): static
+    {
+        if (null === $value) {
+            return self::fromDateTimeImmutable(null);
+        }
+        $dateTime = \DateTimeImmutable::createFromFormat(DateTimeInterface::ATOM, $value);
+        if (false === $dateTime) {
+            throw InvalidDateTimeException::fromATOMValue($value);
+        }
+        return self::fromDateTimeImmutable($dateTime);
+    }
+
+    public final function toATOM(): ?string
+    {
+        return $this->value?->format(DateTimeInterface::ATOM);
+    }
+
     public final function __toString(): string
     {
-        return $this->value ? $this->value->format(DateTimeInterface::ATOM) : '';
+        return $this->toATOM() ?? '';
     }
 }
