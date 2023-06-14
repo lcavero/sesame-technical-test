@@ -1,0 +1,4 @@
+api_checking:
+    resource: checking.yaml
+    prefix: '/checking'
+    name_prefix: 'checking_'

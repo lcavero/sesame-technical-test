@@ -1,0 +1,4 @@
+create_user:
+    path: /
+    controller: App\Checking\User\Infrastructure\EntryPoint\Api\CreateUser\CreateUserApiAction
+    methods: [POST]

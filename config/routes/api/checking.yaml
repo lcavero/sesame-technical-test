@@ -1,0 +1,4 @@
+api_checking_user:
+    resource: ../../../src/Checking/User/Infrastructure/EntryPoint/Api/routes.yaml
+    prefix: '/users'
+    name_prefix: 'users_'

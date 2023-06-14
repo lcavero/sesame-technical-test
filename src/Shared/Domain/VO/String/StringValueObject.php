@@ -4,8 +4,8 @@ namespace App\Shared\Domain\VO\String;
 
 readonly class StringValueObject
 {
-    const MIN = 1;
-    const MAX = 255;
+    const MIN_LENGTH = 1;
+    const MAX_LENGTH = 255;
 
     protected final function __construct(public string $value)
     {
@@ -20,22 +20,22 @@ readonly class StringValueObject
     public static function validate(string $value): void
     {
         if (!self::meetsMinLength($value)) {
-            throw InvalidStringException::fromLengthNotReached($value, static::MIN);
+            throw InvalidStringException::fromLengthNotReached($value, static::MIN_LENGTH);
         }
 
         if (!self::meetsMaxLength($value)) {
-            throw InvalidStringException::fromLengthExceeded($value, static::MAX);
+            throw InvalidStringException::fromLengthExceeded($value, static::MAX_LENGTH);
         }
     }
 
     public final static function meetsMaxLength(string $value): bool
     {
-        return mb_strlen($value) <= static::MAX;
+        return mb_strlen($value) <= static::MAX_LENGTH;
     }
 
     public final static function meetsMinLength(string $value): bool
     {
-        return mb_strlen($value) >= static::MIN;
+        return mb_strlen($value) >= static::MIN_LENGTH;
     }
 
     public final function __toString(): string

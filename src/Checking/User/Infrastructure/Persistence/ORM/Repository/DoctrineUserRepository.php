@@ -4,7 +4,7 @@ namespace App\Checking\User\Infrastructure\Persistence\ORM\Repository;
 
 use App\Checking\User\Domain\Aggregate\User;
 use App\Checking\User\Domain\Aggregate\UserId;
-use App\Checking\User\Domain\Repository\UserNotFoundException;
+use App\Checking\User\Domain\Exception\UserNotFoundException;
 use App\Checking\User\Domain\Repository\UserRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,6 +14,12 @@ final class DoctrineUserRepository extends ServiceEntityRepository implements Us
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
+    }
+
+    public function findOneById(UserId $id): ?User
+    {
+        $em = $this->getEntityManager();
+        return $em->find(User::class, $id->value);
     }
 
     public function findOneByIdOrFail(UserId $id): User

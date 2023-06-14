@@ -7,6 +7,7 @@ use App\Checking\User\Domain\Aggregate\UserId;
 
 interface UserRepository
 {
+    public function findOneById(UserId $id): ?User;
     public function findOneByIdOrFail(UserId $id): User;
     public function save(User $user): void;
 }

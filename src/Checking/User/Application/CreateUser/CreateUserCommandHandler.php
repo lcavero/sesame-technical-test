@@ -6,6 +6,7 @@ use App\Checking\User\Domain\Aggregate\User;
 use App\Checking\User\Domain\Aggregate\UserEmail;
 use App\Checking\User\Domain\Aggregate\UserId;
 use App\Checking\User\Domain\Aggregate\UserName;
+use App\Checking\User\Domain\Exception\UserAlreadyExistsException;
 use App\Checking\User\Domain\Repository\UserRepository;
 use App\Shared\Domain\Bus\Command\CommandHandler;
 
@@ -17,6 +18,10 @@ final readonly class CreateUserCommandHandler implements CommandHandler
 
     public function __invoke(CreateUserCommand $command): void
     {
+        if (null !== $this->userRepository->findOneById(UserId::fromString($command->id))) {
+            throw UserAlreadyExistsException::create(sprintf('The user with id "%s" already exists.', $command->id));
+        }
+
         $user = User::create(
             id: UserId::fromString($command->id),
             name: UserName::fromString($command->name),
