@@ -36,7 +36,7 @@ final class DoctrineUserRepository extends ServiceEntityRepository implements Us
     public function findOneByEmail(UserEmail $email): ?User
     {
         $em = $this->getEntityManager();
-        return $em->getRepository(User::class)->findOneBy(['email.value' => $email]);
+        return $em->getRepository(User::class)->findOneBy(['email.value' => $email->value]);
     }
 
     public function save(User $user): void

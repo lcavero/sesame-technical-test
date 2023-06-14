@@ -23,7 +23,7 @@ final readonly class CreateUserCommandHandler implements CommandHandler
         }
 
         if (null !== $this->userRepository->findOneByEmail(UserEmail::fromString($command->email))) {
-            throw UserAlreadyExistsException::create(sprintf('An user with email "%s" already exists.', $command->id));
+            throw UserAlreadyExistsException::create(sprintf('An user with email "%s" already exists.', $command->email));
         }
 
         $user = User::create(
