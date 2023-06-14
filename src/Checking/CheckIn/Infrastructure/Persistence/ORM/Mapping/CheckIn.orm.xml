@@ -13,6 +13,7 @@
 
         <embedded name="createdAt" class="App\Checking\CheckIn\Domain\Aggregate\CheckInCreatedAt" use-column-prefix="false" />
         <embedded name="updatedAt" class="App\Checking\CheckIn\Domain\Aggregate\CheckInUpdatedAt" use-column-prefix="false" />
+        <embedded name="deletedAt" class="App\Checking\CheckIn\Domain\Aggregate\CheckInDeletedAt" use-column-prefix="false" />
         <embedded name="startDate" class="App\Checking\CheckIn\Domain\Aggregate\CheckInStartDate" use-column-prefix="false" />
         <embedded name="endDate" class="App\Checking\CheckIn\Domain\Aggregate\CheckInEndDate" use-column-prefix="false" />
         <embedded name="userId" class="App\Checking\CheckIn\Domain\Aggregate\CheckInUserId" use-column-prefix="false" />

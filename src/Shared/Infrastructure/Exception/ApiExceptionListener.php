@@ -17,6 +17,7 @@ final readonly class ApiExceptionListener
         }
 
         $exception = $event->getThrowable();
+        var_dump($exception->getMessage());
 
         if ($exception instanceof HttpExceptionInterface) {
             if ($exception->getPrevious() instanceof ValidationFailedException) {
