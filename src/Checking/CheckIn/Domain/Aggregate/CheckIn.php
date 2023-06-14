@@ -4,10 +4,12 @@ namespace App\Checking\CheckIn\Domain\Aggregate;
 
 use App\Checking\CheckIn\Domain\Aggregate\Action\CreateCheckInAction;
 use App\Checking\CheckIn\Domain\Aggregate\Action\DeleteCheckInAction;
+use App\Checking\CheckIn\Domain\Aggregate\Action\UpdateCheckInAction;
 
 class CheckIn
 {
     use CreateCheckInAction;
+    use UpdateCheckInAction;
     use DeleteCheckInAction;
 
     private function __construct(

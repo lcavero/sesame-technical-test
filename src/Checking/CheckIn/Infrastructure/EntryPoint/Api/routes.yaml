@@ -7,8 +7,14 @@ create_checkin:
     path: /
     controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\CreateCheckIn\CreateCheckInApiAction
     methods: [POST]
+    
+update_checkin:
+    path: /{id}/
+    controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\UpdateCheckIn\UpdateCheckInApiAction
+    methods: [PUT]
 
-delete_user:
+
+delete_checkin:
     path: /{id}/
     controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\DeleteCheckIn\DeleteCheckInApiAction
     methods: [DELETE]
