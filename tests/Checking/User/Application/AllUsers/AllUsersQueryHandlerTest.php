@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 final class AllUsersQueryHandlerTest extends TestCase
 {
-
     public function testAllUsersQueryHandlerSuccessfully(): void
     {
         $dataQueryMock = $this->createMock(AllUsersDataQuery::class);
