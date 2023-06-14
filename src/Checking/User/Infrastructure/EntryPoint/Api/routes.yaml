@@ -1,3 +1,8 @@
+list_users:
+    path: /
+    controller: App\Checking\User\Infrastructure\EntryPoint\Api\ListUsers\ListUsersApiAction
+    methods: [GET]
+    
 create_user:
     path: /
     controller: App\Checking\User\Infrastructure\EntryPoint\Api\CreateUser\CreateUserApiAction

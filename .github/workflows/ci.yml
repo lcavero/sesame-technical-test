@@ -25,6 +25,8 @@ jobs:
                     esac
                   done
                   exit 1
+            - name: Execute migrations
+              run: make run-migrations
             - name: Execute tests
               run: make run-tests
             - name: Check HTTP reachability

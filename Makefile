@@ -56,3 +56,6 @@ cc: sf
 ## —— Tests 🔥 ———————————————————————————————————————————————————————————————
 run-tests: ## Run tests
 	@$(PHP_CONT_PHPUNIT) bin/phpunit --coverage-text
+
+run-migrations: ## Run migrations
+	@$(SYMFONY) doctrine:migrations:migrate -n

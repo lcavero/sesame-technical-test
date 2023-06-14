@@ -22,4 +22,5 @@ You can use make commands included in Makefile to run common actions like:
 - Up containers: make up
 - Down containers: make down
 - Enter in php container: make sh
+- Run migrations: make run-migrations
 - Run tests: make run-tests
