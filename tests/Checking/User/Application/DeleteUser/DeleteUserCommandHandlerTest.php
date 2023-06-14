@@ -38,7 +38,7 @@ final class DeleteUserCommandHandlerTest extends TestCase
         ;
         $repositoryMock->expects($this->once())
             ->method('save')
-            ->with(self::callback(function ($user) use ($command): bool {
+            ->with(self::callback(function ($user): bool {
                 self::assertInstanceOf(User::class, $user);
                 self::assertNotNull($user->deletedAt()->value);
                 return true;

@@ -3,10 +3,12 @@
 namespace App\Checking\CheckIn\Domain\Aggregate;
 
 use App\Checking\CheckIn\Domain\Aggregate\Action\CreateCheckInAction;
+use App\Checking\CheckIn\Domain\Aggregate\Action\DeleteCheckInAction;
 
 class CheckIn
 {
     use CreateCheckInAction;
+    use DeleteCheckInAction;
 
     private function __construct(
         private string $id,

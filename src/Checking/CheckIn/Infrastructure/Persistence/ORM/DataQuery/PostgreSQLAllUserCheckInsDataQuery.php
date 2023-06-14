@@ -3,7 +3,6 @@
 namespace App\Checking\CheckIn\Infrastructure\Persistence\ORM\DataQuery;
 
 use App\Checking\CheckIn\Domain\DataQuery\AllUserCheckInsDataQuery;
-use App\Checking\User\Domain\DataQuery\AllUsersDataQuery;
 use Doctrine\ORM\EntityManagerInterface;
 
 final readonly class PostgreSQLAllUserCheckInsDataQuery implements AllUserCheckInsDataQuery
