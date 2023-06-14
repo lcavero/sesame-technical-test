@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "c0a96a9d-039b-4617-81dc-f89670a99e1c",
+		"name": "Sesame API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7398701"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "List users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost/api/checking/users/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/users/305d0b27-dfc4-4642-9a9e-b5a7c68eb54f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"users",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f\",\n    \"name\": \"Luis\",\n    \"email\": \"luiscaverodeveloper@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/users/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Luis\",\n    \"email\": \"luiscavero@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/users/305d0b27-dfc4-4642-9a9e-b5a7c68eb54f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"users",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/users/305d0b27-dfc4-4642-9a9e-b5a7c68eb54f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"users",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CheckIn",
+			"item": [
+				{
+					"name": "List user check-ins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/check-ins/user/305d0b27-dfc4-4642-9a9e-b5a7c68eb54f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"check-ins",
+								"user",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get check-in",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/check-ins/305d0b27-dfc4-4642-9a9e-b5a7c68eb36f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"check-ins",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb36f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create check-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"305d0b27-dfc4-4642-9a9e-b5a7c68eb35f\",\n    \"userId\": \"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f\",\n    \"startDate\": \"2020-10-10 00:00:00\",\n    \"endDate\":  \"2020-10-10 05:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/check-ins/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"check-ins",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update check-in",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"305d0b27-dfc4-4642-9a9e-b5a7c68eb54f\",\n    \"startDate\": \"2020-10-11 00:00:00\",\n    \"endDate\":  \"2020-10-12 05:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/check-ins/305d0b27-dfc4-4642-9a9e-b5a7c68eb36f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"check-ins",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb36f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete check-in",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost/api/checking/check-ins/305d0b27-dfc4-4642-9a9e-b5a7c68eb35f/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"checking",
+								"check-ins",
+								"305d0b27-dfc4-4642-9a9e-b5a7c68eb35f",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docs json",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"aaa37f3c28684\",\n    \"name\": null,\n    \"email\": \"invalidcom\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/api/doc.json",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"doc.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Docs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"aaa37f3c28684\",\n    \"name\": null,\n    \"email\": \"invalidcom\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/api/doc",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"doc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

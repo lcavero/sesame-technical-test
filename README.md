@@ -4,6 +4,8 @@ A Symfony test project made with CQRS, Hexagonal Architecture and DDD.
 
 The purpose of the project is to solve the test presented by Sesame, the statement of which can be found in the "docs" folder.
 
+You can find an up-to-date Postman collection of the endpoints in the "docs" folder
+
 Created from [Symfony Docker](https://github.com/dunglas/symfony-docker) project as starting point.
 
 ![CI](https://github.com/lcavero/sesame-technical-test/workflows/CI/badge.svg)
