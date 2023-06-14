@@ -7,9 +7,9 @@ use Symfony\Component\Validator\Constraint;
 #[\Attribute]
 final class EntityExists extends Constraint
 {
-    public string $message = 'An entity with {{ field }} equals to "{{ value }}" already exists';
+    public string $message = 'An entity with {{ field }} equals to "{{ value }}" should exists';
 
-    public function __construct(public string $entity, public string $field, public ?string $excludedEntity = null, array $groups = null, mixed $payload = null)
+    public function __construct(public string $entity, public string $field, array $groups = null, mixed $payload = null)
     {
         parent::__construct([], $groups, $payload);
     }

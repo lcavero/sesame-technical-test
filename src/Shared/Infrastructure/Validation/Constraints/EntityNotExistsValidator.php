@@ -8,7 +8,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
-final class EntityExistsValidator extends ConstraintValidator
+final class EntityNotExistsValidator extends ConstraintValidator
 {
     public function __construct(private readonly EntityManagerInterface $entityManager)
     {
@@ -16,8 +16,8 @@ final class EntityExistsValidator extends ConstraintValidator
 
     public function validate(mixed $value, Constraint $constraint): void
     {
-        if (!$constraint instanceof EntityExists) {
-            throw new UnexpectedTypeException($constraint, EntityExists::class);
+        if (!$constraint instanceof EntityNotExists) {
+            throw new UnexpectedTypeException($constraint, EntityNotExists::class);
         }
 
         if (null === $value || '' === $value) {
@@ -31,12 +31,18 @@ final class EntityExistsValidator extends ConstraintValidator
         $repository = $this->entityManager->getRepository($constraint->entity);
         $entity = $repository->findOneBy([$constraint->field => $value]);
 
-        if (null === $entity) {
+        if (null !== $entity && !$this->shouldIgnoreEntity($constraint, $entity)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ field }}', $constraint->field)
                 ->setParameter('{{ value }}', strval($value))
                 ->addViolation()
             ;
         }
+    }
+
+    private function shouldIgnoreEntity(EntityNotExists $constraint, mixed $entity): bool
+    {
+        $filterField = $constraint->excludedEntityField;
+        return null !== $filterField && call_user_func_array([$entity, $filterField], [])->value === $this->context->getObject()->$filterField;
     }
 }

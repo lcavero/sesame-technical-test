@@ -18,4 +18,10 @@ class BaseWebTestCase extends WebTestCase
         $this->em = $this->getContainer()->get(EntityManagerInterface::class);
         $this->em->getConnection()->setAutoCommit(false);
     }
+
+    protected function getResponse(): ?array
+    {
+        $responseData = $this->client->getResponse();
+        return json_decode($responseData->getContent(), true);
+    }
 }
