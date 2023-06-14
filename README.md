@@ -6,6 +6,8 @@ The purpose of the project is to solve the test presented by Sesame, the stateme
 
 You can find an up-to-date Postman collection of the endpoints in the "docs" folder
 
+You can find the api documentation in https://localhost/api/doc.
+
 Created from [Symfony Docker](https://github.com/dunglas/symfony-docker) project as starting point.
 
 ![CI](https://github.com/lcavero/sesame-technical-test/workflows/CI/badge.svg)
