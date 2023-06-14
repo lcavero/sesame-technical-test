@@ -30,7 +30,12 @@ final class EntityExistsValidator extends ConstraintValidator
 
         $repository = $this->entityManager->getRepository($constraint->entity);
         $entity = $repository->findOneBy([$constraint->field => $value]);
-        if (null !== $entity) {
+
+        if (null !== $constraint->excludedEntity) {
+            assert(method_exists($entity, 'id'));
+        }
+
+        if (null !== $entity && (null === $constraint->excludedEntity || $entity->id()->value !== $constraint->excludedEntity)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ field }}', $constraint->field)
                 ->setParameter('{{ value }}', strval($value))
