@@ -15,9 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class UpdateUserApiActionTest extends BaseWebTestCase
 {
-    const uri = '/api/checking/users/';
+    const uri = '/api/checking/users/%s/';
 
-    public function testCreateUserApiActionFailsBecauseEmailAlreadyExists(): void
+    public function testUpdateUserApiActionFailsBecauseEmailAlreadyExists(): void
     {
         $repository = self::getContainer()->get(UserRepository::class);
         $user = User::fromValues(
@@ -43,11 +43,10 @@ final class UpdateUserApiActionTest extends BaseWebTestCase
         $repository->save($user2);
 
         $body = [
-            'id' => $user2->id()->value,
             'name' => 'Changed',
             'email' => $user->email()->value
         ];
-        $this->client->request('PUT', self::uri, $body);
+        $this->client->request('PUT', sprintf(self::uri, $user2->id()->value,), $body);
 
         $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
 
@@ -58,14 +57,13 @@ final class UpdateUserApiActionTest extends BaseWebTestCase
         self::assertSame($errors, $this->getResponse()['errors'] ?? null);
     }
 
-    public function testCreateUserApiActionFailsBecauseUserNotExists(): void
+    public function testUpdateUserApiActionFailsBecauseUserNotExists(): void
     {
         $body = [
-            'id' => '15342d22-d819-460a-a662-b679a7fe89b2',
             'name' => 'test',
             'email' => 'test@test.com'
         ];
-        $this->client->request('PUT', self::uri, $body);
+        $this->client->request('PUT', sprintf(self::uri, '15342d22-d819-460a-a662-b679a7fe89b2'), $body);
 
         $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
 
@@ -76,7 +74,7 @@ final class UpdateUserApiActionTest extends BaseWebTestCase
         self::assertSame($errors, $this->getResponse()['errors'] ?? null);
     }
 
-    public function testCreateUserApiActionSuccessfully(): void
+    public function testUpdateUserApiActionSuccessfully(): void
     {
         $repository = self::getContainer()->get(UserRepository::class);
         $user = User::fromValues(
@@ -102,11 +100,10 @@ final class UpdateUserApiActionTest extends BaseWebTestCase
         $repository->save($user2);
 
         $body = [
-            'id' => $user2->id()->value,
             'name' => 'Changed',
             'email' => $user2->email()->value
         ];
-        $this->client->request('PUT', self::uri, $body);
+        $this->client->request('PUT', sprintf(self::uri, $user2->id()->value), $body);
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }

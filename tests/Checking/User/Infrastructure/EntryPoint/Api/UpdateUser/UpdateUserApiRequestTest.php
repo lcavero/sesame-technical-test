@@ -17,10 +17,9 @@ final class UpdateUserApiRequestTest extends BaseKernelTestCase
     }
 
     /** @dataProvider updateUserApiRequestFailuresDataProvider */
-    public function testUpdateUserApiRequestFailures(string $id, string $name, string $email, array $errors): void
+    public function testUpdateUserApiRequestFailures(string $name, string $email, array $errors): void
     {
         $request = new UpdateUserApiRequest(
-            id: $id,
             name: $name,
             email: $email
         );
@@ -37,31 +36,25 @@ final class UpdateUserApiRequestTest extends BaseKernelTestCase
     {
         return [
             'All blanks' => [
-                'id' => '',
                 'name' => '',
                 'email' => '',
                 'errors' => [
-                    'id' => 'This value should not be blank.',
                     'name' => 'This value should not be blank.',
                     'email' => 'This value should not be blank.',
                 ]
             ],
             'Invalid values' => [
-                'id' => 'invalid',
                 'name' => '1',
                 'email' => 'invalid',
                 'errors' => [
-                    'id' => 'This value is not valid.',
                     'name' => "This value is too short. It should have 3 characters or more.",
                     'email' => 'This value is not valid.',
                 ]
             ],
             'Invalid values #2' => [
-                'id' => 'uuid',
                 'name' => 'TestFieldWithMoreThan30Characters',
                 'email' => '-',
                 'errors' => [
-                    'id' => 'This value is not valid.',
                     'name' => "This value is too long. It should have 30 characters or less.",
                     'email' => 'This value is not valid.',
                 ]

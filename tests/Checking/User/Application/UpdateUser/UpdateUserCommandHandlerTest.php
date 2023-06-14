@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 final class UpdateUserCommandHandlerTest extends TestCase
 {
-        public function testUpdateFailedBecauseUserWithSameEmailAlreadyExists(): void
+    public function testUpdateFailedBecauseUserWithSameEmailAlreadyExists(): void
     {
         $command = UpdateUserCommand::create(
             id: UuidValueObject::generate()->value,

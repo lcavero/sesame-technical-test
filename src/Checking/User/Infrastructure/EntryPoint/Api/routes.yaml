@@ -9,6 +9,11 @@ create_user:
     methods: [POST]
 
 update_user:
-    path: /
+    path: /{id}/
     controller: App\Checking\User\Infrastructure\EntryPoint\Api\UpdateUser\UpdateUserApiAction
     methods: [PUT]
+    
+delete_user:
+    path: /{id}/
+    controller: App\Checking\User\Infrastructure\EntryPoint\Api\DeleteUser\DeleteUserApiAction
+    methods: [DELETE]

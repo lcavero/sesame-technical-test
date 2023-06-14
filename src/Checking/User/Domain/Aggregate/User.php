@@ -3,12 +3,14 @@
 namespace App\Checking\User\Domain\Aggregate;
 
 use App\Checking\User\Domain\Aggregate\Action\CreateUserAction;
+use App\Checking\User\Domain\Aggregate\Action\DeleteUserAction;
 use App\Checking\User\Domain\Aggregate\Action\UpdateUserAction;
 
 class User
 {
     use CreateUserAction;
     use UpdateUserAction;
+    use DeleteUserAction;
 
     private function __construct(
         private string $id,

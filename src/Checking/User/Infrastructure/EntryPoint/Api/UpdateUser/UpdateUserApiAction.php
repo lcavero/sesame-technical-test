@@ -11,21 +11,23 @@ use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 final readonly class UpdateUserApiAction implements ApiController
 {
     use ApiControllerTrait;
 
-    public function __construct(private CommandBus $commandBus)
+    public function __construct(private CommandBus $commandBus, private ValidatorInterface $validator)
     {
     }
 
-    #[OA\Post(requestBody: new OA\RequestBody(content: new OA\JsonContent(ref: new Model(type: UpdateUserApiRequest::class))))]
-    public function __invoke(#[MapRequestPayload] UpdateUserApiRequest $request): JsonResponse
+    #[OA\Put(requestBody: new OA\RequestBody(content: new OA\JsonContent(ref: new Model(type: UpdateUserApiRequest::class))))]
+    public function __invoke(string $id, #[MapRequestPayload] UpdateUserApiRequest $request): JsonResponse
     {
+        $this->validateRequest(new UpdateUserApiRouteParamsRequest($id, $request->email));
         $command = UpdateUserCommand::create(
-            id: $request->id,
+            id: $id,
             name: $request->name,
             email: $request->email
         );
