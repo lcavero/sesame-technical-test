@@ -2,7 +2,6 @@
 
 namespace App\Tests\Checking\CheckIn\Infrastructure\EntryPoint\Api\ListUserCheckIns;
 
-use App\Checking\CheckIn\Infrastructure\EntryPoint\Api\ListUserCheckIns\ListUserCheckInsApiAction;
 use App\Checking\User\Domain\Aggregate\User;
 use App\Checking\User\Domain\Aggregate\UserCreatedAt;
 use App\Checking\User\Domain\Aggregate\UserDeletedAt;
@@ -12,7 +11,6 @@ use App\Checking\User\Domain\Aggregate\UserName;
 use App\Checking\User\Domain\Aggregate\UserUpdatedAt;
 use App\Checking\User\Domain\Repository\UserRepository;
 use App\Tests\BaseWebTestCase;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ListUserCheckInsApiActionTest extends BaseWebTestCase

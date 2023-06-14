@@ -3,6 +3,11 @@ list_user_checkins:
     controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\ListUserCheckIns\ListUserCheckInsApiAction
     methods: [GET]
     
+get_checkin:
+    path: /{id}/
+    controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\GetCheckIn\GetCheckInApiAction
+    methods: [GET]
+    
 create_checkin:
     path: /
     controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\CreateCheckIn\CreateCheckInApiAction
@@ -12,7 +17,6 @@ update_checkin:
     path: /{id}/
     controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\UpdateCheckIn\UpdateCheckInApiAction
     methods: [PUT]
-
 
 delete_checkin:
     path: /{id}/

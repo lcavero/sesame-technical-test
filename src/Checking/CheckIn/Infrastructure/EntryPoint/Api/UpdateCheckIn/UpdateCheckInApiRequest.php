@@ -2,12 +2,9 @@
 
 namespace App\Checking\CheckIn\Infrastructure\EntryPoint\Api\UpdateCheckIn;
 
-use App\Checking\CheckIn\Domain\Aggregate\CheckIn;
-use App\Checking\CheckIn\Domain\Aggregate\CheckInId;
 use App\Checking\CheckIn\Domain\Aggregate\CheckInUserId;
 use App\Checking\User\Domain\Aggregate\User;
 use App\Shared\Infrastructure\Validation\Constraints\EntityExists;
-use App\Shared\Infrastructure\Validation\Constraints\EntityNotExists;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
