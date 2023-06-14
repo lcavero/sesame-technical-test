@@ -17,5 +17,9 @@
         <embedded name="updatedAt" class="App\Checking\User\Domain\Aggregate\UserUpdatedAt" use-column-prefix="false" />
         <embedded name="deletedAt" class="App\Checking\User\Domain\Aggregate\UserDeletedAt" use-column-prefix="false" />
 
+        <unique-constraints>
+            <unique-constraint columns="email" />
+        </unique-constraints>
+
     </entity>
 </doctrine-mapping>

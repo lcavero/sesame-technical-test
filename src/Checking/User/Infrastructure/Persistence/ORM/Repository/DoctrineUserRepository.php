@@ -3,6 +3,7 @@
 namespace App\Checking\User\Infrastructure\Persistence\ORM\Repository;
 
 use App\Checking\User\Domain\Aggregate\User;
+use App\Checking\User\Domain\Aggregate\UserEmail;
 use App\Checking\User\Domain\Aggregate\UserId;
 use App\Checking\User\Domain\Exception\UserNotFoundException;
 use App\Checking\User\Domain\Repository\UserRepository;
@@ -30,6 +31,12 @@ final class DoctrineUserRepository extends ServiceEntityRepository implements Us
             throw UserNotFoundException::create(sprintf('The user with id "%s" was not found.', $id->value));
         }
         return $user;
+    }
+
+    public function findOneByEmail(UserEmail $email): ?User
+    {
+        $em = $this->getEntityManager();
+        return $em->getRepository(User::class)->findOneBy(['email.value' => $email]);
     }
 
     public function save(User $user): void

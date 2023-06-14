@@ -31,6 +31,7 @@ final readonly class CreateUserApiRequest
             new Assert\NotBlank(),
             new Assert\Type('string'),
             new Assert\Regex(pattern: UserEmail::EMAIL_PATTERN),
+            new EntityExists(entity: User::class, field: 'email'),
         ])]
         public string $email,
     ) {

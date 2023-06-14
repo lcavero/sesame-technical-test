@@ -19,7 +19,11 @@ final readonly class CreateUserCommandHandler implements CommandHandler
     public function __invoke(CreateUserCommand $command): void
     {
         if (null !== $this->userRepository->findOneById(UserId::fromString($command->id))) {
-            throw UserAlreadyExistsException::create(sprintf('The user with id "%s" already exists.', $command->id));
+            throw UserAlreadyExistsException::create(sprintf('An user with id "%s" already exists.', $command->id));
+        }
+
+        if (null !== $this->userRepository->findOneByEmail(UserEmail::fromString($command->email))) {
+            throw UserAlreadyExistsException::create(sprintf('An user with email "%s" already exists.', $command->id));
         }
 
         $user = User::create(
