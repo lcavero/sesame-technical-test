@@ -1,0 +1,4 @@
+create_checkin:
+    path: /
+    controller: App\Checking\CheckIn\Infrastructure\EntryPoint\Api\CreateCheckIn\CreateCheckInApiAction
+    methods: [POST]

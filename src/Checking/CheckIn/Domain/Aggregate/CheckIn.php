@@ -2,8 +2,12 @@
 
 namespace App\Checking\CheckIn\Domain\Aggregate;
 
+use App\Checking\CheckIn\Domain\Aggregate\Action\CreateCheckInAction;
+
 class CheckIn
 {
+    use CreateCheckInAction;
+
     private function __construct(
         private string $id,
         private CheckInStartDate $startDate,

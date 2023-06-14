@@ -2,3 +2,8 @@ api_checking_user:
     resource: ../../../src/Checking/User/Infrastructure/EntryPoint/Api/routes.yaml
     prefix: '/users'
     name_prefix: 'users_'
+
+api_checking_checkin:
+    resource: ../../../src/Checking/CheckIn/Infrastructure/EntryPoint/Api/routes.yaml
+    prefix: '/check-ins'
+    name_prefix: 'check_ins_'

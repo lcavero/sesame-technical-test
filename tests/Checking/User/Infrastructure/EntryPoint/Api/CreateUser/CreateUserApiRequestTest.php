@@ -16,6 +16,19 @@ final class CreateUserApiRequestTest extends BaseKernelTestCase
         $this->validator = self::getContainer()->get(ValidatorInterface::class);
     }
 
+    /** @dataProvider createUserApiRequestSuccessfullyDataProvider */
+    public function testCreateUserApiRequestSuccessfully(string $id, string $name, string $email): void
+    {
+        $request = new CreateUserApiRequest(
+            id: $id,
+            name: $name,
+            email: $email
+        );
+
+        $constraintViolationList = $this->validator->validate($request);
+        self::assertTrue(0 === $constraintViolationList->count());
+    }
+
     /** @dataProvider createUserApiRequestFailuresDataProvider */
     public function testCreateUserApiRequestFailures(string $id, string $name, string $email, array $errors): void
     {
@@ -31,6 +44,17 @@ final class CreateUserApiRequestTest extends BaseKernelTestCase
             self::assertArrayHasKey($constraintViolation->getPropertyPath(), $errors);
             self::assertSame($errors[$constraintViolation->getPropertyPath()], $constraintViolation->getMessage());
         }
+    }
+
+    public function createUserApiRequestSuccessfullyDataProvider(): array
+    {
+        return [
+            'Invalid values #2' => [
+                'id' => 'd0643b8e-1cbb-4f60-84fe-7aa3981297e6',
+                'name' => 'Valid',
+                'email' => 'valid@gmail.com',
+            ],
+        ];
     }
 
     public function createUserApiRequestFailuresDataProvider(): array
